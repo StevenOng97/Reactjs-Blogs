@@ -26,7 +26,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isLoading: false,
-        data: action.payload,
+        articles: action.payload,
       };
     case FETCH_ARTICLES_FAILURE:
       return {
@@ -60,10 +60,12 @@ const IndexPage = () => {
       }
     };
 
-    // fetchArticlesEndpoint();
+    fetchArticlesEndpoint();
   }, []);
 
   const classes = useStyles();
+
+  console.log("articles", articles);
 
   return (
     <Layout>
