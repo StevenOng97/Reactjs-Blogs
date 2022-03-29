@@ -1,6 +1,9 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import Layout from '../components/main-layout';
 import getArticleApi from '../api/getArticleApi';
+import CardWrapper from '../components/CardWrapper';
+import { Container, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 const initialState = {
   isLoading: false,
@@ -36,9 +39,16 @@ const reducer = (state, action) => {
   }
 };
 
+const useStyles = makeStyles({
+  containerWrapper: {
+    marginTop: '150px',
+  }
+})
+
 const IndexPage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  
+
+  const { isLoading, articles, articlesError } = state;
   useEffect(() => {
     const fetchArticlesEndpoint = async () => {
       dispatch({ type: FETCH_ARTICLES });
@@ -50,12 +60,19 @@ const IndexPage = () => {
       }
     };
 
-    fetchArticlesEndpoint();
+    // fetchArticlesEndpoint();
   }, []);
+
+  const classes = useStyles();
 
   return (
     <Layout>
-      <div>Index Page</div>
+      <Container className={classes.containerWrapper}>
+        <Typography component="div" variant="h6" sx={{ textAlign: 'center' }}>
+          The Application is built for practicing Reactjs and Nodejs Purpose.
+        </Typography>
+        <CardWrapper data={articles} isLoading={isLoading} />
+      </Container>
     </Layout>
   );
 };

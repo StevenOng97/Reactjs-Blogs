@@ -1,9 +1,10 @@
-import './main.scss';
 // import { AnimatePresence, motion } from 'framer-motion/dist/framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import IndexPage from './modules/IndexPage';
 import ArticlePage from './modules/ArticlePage';
 import { AnimatePresence } from 'framer-motion';
+import './reset.scss';
+import './main.scss';
 
 function App() {
   const location = useLocation();
