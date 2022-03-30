@@ -42,8 +42,9 @@ const reducer = (state, action) => {
 const useStyles = makeStyles({
   containerWrapper: {
     marginTop: '150px',
-  }
-})
+    minHeight: 'calc(100vh - 64px - 150px)',
+  },
+});
 
 const IndexPage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -65,7 +66,7 @@ const IndexPage = () => {
 
   const classes = useStyles();
 
-  console.log("articles", articles);
+  console.log('articles', articles);
 
   return (
     <Layout>

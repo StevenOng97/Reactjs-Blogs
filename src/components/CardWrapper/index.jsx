@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { makeStyles } from '@mui/styles';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 import {
   Card,
@@ -14,7 +15,7 @@ import {
 
 import './styles.scss';
 
-const skeCardNumber = 3;
+const skeCardNumber = 9;
 
 const animations = {
   initial: { opacity: 0 },
@@ -37,6 +38,7 @@ const useStyles = makeStyles({
 });
 
 const CardWrapper = ({ data, isLoading }) => {
+  const navigate = useNavigate();
   const renderSkeCards = useCallback(() => {
     return [...new Array(skeCardNumber)].map((_, i) => {
       return (
@@ -71,6 +73,7 @@ const CardWrapper = ({ data, isLoading }) => {
 
   const renderDataCards = useCallback(() => {
     return data.map((card, i) => {
+      const urlToRedirect = card.url.split('/').pop();
       return (
         <Grid item md={6} lg={4} xs={12} key={i}>
           <AnimatePresence exitBeforeEnter>
@@ -81,7 +84,11 @@ const CardWrapper = ({ data, isLoading }) => {
               exit="exit"
               transition={{ duration: 1 }}
             >
-              <Card variant="outlined" className={classes.root}>
+              <Card
+                variant="outlined"
+                className={classes.root}
+                onClick={() => navigate(`/article/${urlToRedirect}`)}
+              >
                 <CardMedia
                   component="img"
                   height="200"
@@ -112,7 +119,12 @@ const CardWrapper = ({ data, isLoading }) => {
                     textAlign: ' right',
                   }}
                 >
-                  <Button variant="contained">Go To Post</Button>
+                  <Button
+                    variant="contained"
+                    onClick={() => navigate(`/article/${urlToRedirect}`)}
+                  >
+                    Go To Post
+                  </Button>
                 </Box>
               </Card>
             </motion.div>
