@@ -2,7 +2,14 @@ import React, { useReducer, useEffect, useCallback, useState } from 'react';
 import Layout from '../components/main-layout';
 import getArticleApi from '../api/getArticleApi';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Box, Container, Skeleton, Typography, Button } from '@mui/material';
+import {
+  Box,
+  Container,
+  Skeleton,
+  Typography,
+  Button,
+  Link,
+} from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { AnimatePresence, motion } from 'framer-motion';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
@@ -72,6 +79,15 @@ const useStyles = makeStyles({
     lineHeight: 1.5,
     fontWeight: 400,
     marginTop: '1rem !important',
+  },
+  redirectPostWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    wordBreak: 'break-word',
+    fontFamily: 'GuardianTextEgyptian,Guardian Text Egyptian Web,Georgia,serif',
+    fontSize: '1.0625rem',
+    lineHeight: 1.5,
+    fontWeight: 400,
   },
 });
 
@@ -193,6 +209,21 @@ const ArticlePage = ({ getArticlesError }) => {
                     {renderContent()}
                   </Typography>
                 </Box>
+                <Box
+                  sx={{ marginTop: '1rem' }}
+                  className={classes.redirectPostWrapper}
+                >
+                  <Typography variant="p" component="p">
+                    Click here to read full post:
+                  </Typography>
+                  <Link
+                    href={article.externalLink}
+                    target="_blank"
+                    sx={{ marginLeft: '0.2em', fontWeight: 'bold' }}
+                  >
+                    Link
+                  </Link>
+                </Box>
               </Box>
               {!hiddenButton && (
                 <AnimatePresence exitBeforeEnter>
@@ -206,7 +237,7 @@ const ArticlePage = ({ getArticlesError }) => {
                     <Button
                       variant="contained"
                       color="error"
-                      sx={{ position: 'fixed', right: '10%', bottom: '3%' }}
+                      sx={{ position: 'fixed', right: '10%', bottom: '10%' }}
                       onClick={() => window.scrollTo(0, 0)}
                     >
                       <ArrowUpwardIcon color="common.white" />

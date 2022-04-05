@@ -133,7 +133,7 @@ const IndexPage = ({ getArticlesError }) => {
               <Button
                 variant="contained"
                 color="error"
-                sx={{ position: 'fixed', right: '10%', bottom: '3%' }}
+                sx={{ position: 'fixed', right: '10%', bottom: '10%' }}
                 onClick={() => window.scrollTo(0, 0)}
               >
                 <ArrowUpwardIcon color="common.white" />
