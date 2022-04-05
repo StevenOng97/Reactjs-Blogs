@@ -28,7 +28,6 @@ const useStyles = makeStyles({
     flexGrow: 0.45,
     display: 'flex',
     margin: '15px 0',
-    cursor: 'pointer',
   },
 
   linkWrapper: {
@@ -54,9 +53,14 @@ const Header = () => {
           >
             <Box
               className={classes.imageWrapper}
-              onClick={() => navigate('/articles')}
             >
-              <img src={logo} alt="logo" width="150" />
+              <img
+                src={logo}
+                alt="logo"
+                width="150"
+                onClick={() => navigate('/articles')}
+                style={{ cursor: 'pointer ' }}
+              />
             </Box>
             <Typography
               variant="p"
