@@ -57,14 +57,17 @@ const Footer = () => {
             </Box>
             <Typography variant="p" component="div">
               <FacebookIcon
+                fontSize="large"
                 className={classes.iconWrapper}
                 onClick={() => window.open(facebookUrl)}
               />
               <InstagramIcon
+                fontSize="large"
                 className={classes.iconWrapper}
                 onClick={() => window.open(instagramUrl)}
               />
               <LinkedInIcon
+                fontSize="large"
                 className={classes.iconWrapper}
                 onClick={() => window.open(linkedInUrl)}
               />

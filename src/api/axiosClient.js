@@ -2,7 +2,7 @@ import axios from 'axios';
 import queryString from 'query-string';
 
 const axiosClient = axios.create({
-  baseURL: 'https://us-central1-horizontal-cab-336803.cloudfunctions.net',
+  baseURL: 'https://blogs-scraper.vercel.app/api',
   headers: {
     'content-type': 'application/json'
   },

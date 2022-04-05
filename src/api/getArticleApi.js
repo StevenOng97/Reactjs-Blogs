@@ -6,8 +6,8 @@ const getArticleApi = {
     return axiosClient.get(url);
   },
 
-  getSingleArticle: (country) => {
-    const url = `/article/${country}`;
+  getSingleArticle: (urlString) => {
+    const url = `/article/${urlString}`;
     return axiosClient.get(url);
   },
 };

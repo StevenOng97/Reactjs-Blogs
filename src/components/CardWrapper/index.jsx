@@ -87,7 +87,7 @@ const CardWrapper = ({ data, isLoading }) => {
               <Card
                 variant="outlined"
                 className={classes.root}
-                onClick={() => navigate(`/article/${urlToRedirect}`)}
+                onClick={() => navigate(`/articles/${urlToRedirect}`)}
               >
                 <CardMedia
                   component="img"
@@ -121,7 +121,7 @@ const CardWrapper = ({ data, isLoading }) => {
                 >
                   <Button
                     variant="contained"
-                    onClick={() => navigate(`/article/${urlToRedirect}`)}
+                    onClick={() => navigate(`/articles/${urlToRedirect}`)}
                   >
                     Go To Post
                   </Button>
@@ -136,7 +136,7 @@ const CardWrapper = ({ data, isLoading }) => {
 
   return (
     <Grid container spacing={2} mt={2} alignItems="stretch">
-      {isLoading && renderSkeCards()}
+      {(isLoading || !data) && renderSkeCards()}
       {!isLoading && renderDataCards()}
     </Grid>
   );
